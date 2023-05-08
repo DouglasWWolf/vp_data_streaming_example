@@ -31,7 +31,7 @@ module sender
         if (resetn == 0) begin
             fsm_state <= 0;
             counter   <= 0;
-            led_bits  <= 0;
+            led_bits  <= 1;
 
         end else case (fsm_state)
 
@@ -43,7 +43,6 @@ module sender
             0:  if (counter)
                     counter <= counter - 1;
                 else begin
-                    led_bits  <= (led_bits == 0) ? 1 : led_bits << 1;
                     fsm_state <= 1;
                 end
 
@@ -60,6 +59,7 @@ module sender
                     if (nap.valid && nap.ready) begin
                         nap.valid <= 0;
                         counter   <= CLOCK_HZ / 5;
+                        led_bits  <= {led_bits[6:0], led_bits[7]};
                         fsm_state <= 0;
                     end
                 end
