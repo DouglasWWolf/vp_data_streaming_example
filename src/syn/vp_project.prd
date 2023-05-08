@@ -1,0 +1,13 @@
+#--  Synopsys, Inc.
+#--  Version S-2021.09X-2
+#--  Project file /fpga/vp_data_streaming_example/src/syn/vp_project.prd
+#--  Written on Mon May  8 13:31:35 2023
+
+#
+### Watch Implementation type ###
+#
+watch_impl -all
+#
+### Watch Implementation properties ###
+#
+watch_prop -clear
